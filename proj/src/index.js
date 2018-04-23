@@ -3,9 +3,9 @@ const colors = require('colors');
 const check = (description, callback) => {
     try {
         callback();
-        console.log(`${' ✓ '.bgGreen.black} ${description}`);
+        console.log(`${' ✓ '.bgGreen.black} ${description.green}`);
     } catch (e) {
-        console.log(`${' X '.bgRed.black} ${description}`);
+        console.log(`${' FAILED '.bgRed.black} ${description.red}`);
         console.log(e.stack.red);
     }
 };
@@ -16,7 +16,7 @@ const expect = (val) => {
 };
 
 const xcheck = (description, callback) => {
-    console.log(`${' IGNORED '.bgYellow.black} ${description}`);
+    console.log(`${' IGNORED '.bgYellow.black} ${description.yellow}`);
 };
 
 module.exports = { check, expect, xcheck };
