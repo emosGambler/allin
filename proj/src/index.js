@@ -29,9 +29,14 @@ const expect = (val) => {
     throw new Error('Assersion failed.');
 };
 
+const scenario = (title, callback) => {
+    console.log(`\n Scenario: ${title}`.cyan);
+    callback();
+};
+
 const xcheck = (description, callback) => {
     console.log(`${' IGNORED '.bgYellow.black} ${description.yellow}`);
     summary.ignored++;
 };
 
-module.exports = { check, end, expect, xcheck };
+module.exports = { check, end, expect, scenario, xcheck };
