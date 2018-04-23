@@ -1,10 +1,12 @@
+const colors = require('colors');
+
 const check = (description, callback) => {
     try {
         callback();
-        console.log(`OK ${description}`);
+        console.log(`${' ✓ '.bgGreen.black} ${description}`);
     } catch (e) {
-        console.log(`FAIL ${description}`);
-        console.log(e.stack);
+        console.log(`${' X '.bgRed.black} ${description}`);
+        console.log(e.stack.red);
     }
 };
 

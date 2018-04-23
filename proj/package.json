@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test": "node tests"
+    "clean": "rimraf node_modules/",
+    "test": ""
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/emosGambler/allin/issues"
   },
-  "homepage": "https://github.com/emosGambler/allin#readme"
+  "homepage": "https://github.com/emosGambler/allin#readme",
+  "dependencies": {
+    "colors": "^1.2.1"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.2"
+  }
 }
