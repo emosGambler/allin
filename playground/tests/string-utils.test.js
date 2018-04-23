@@ -1,7 +1,7 @@
 const { expect, check, scenario, xcheck } = require('allin');
 const stringUtils = require('./../src/string-utils');
 
-scenario('Testing', () => {
+scenario('String utils', () => {
     check('should first letter be capitalized', () => {
         expect(stringUtils.capitalizeFirstLetter('why so serious?') === 'Why so serious?');
         expect(stringUtils.capitalizeFirstLetter('why So Serious?') === 'Why So Serious?');
