@@ -10,10 +10,10 @@ check('should return true for primes', () => {
 });
 
 check('should return false for non-primes', () => {
-    expect(numberUtils.isPrime(4));
-    expect(numberUtils.isPrime(8));
-    expect(numberUtils.isPrime(10));
-    expect(numberUtils.isPrime(20));
+    expect(numberUtils.isPrime(4) === false);
+    expect(numberUtils.isPrime(8) === false);
+    expect(numberUtils.isPrime(10) === false);
+    expect(numberUtils.isPrime(20) === false);
 });
 check('should simply fail', () => {
     expect(123 === 321);

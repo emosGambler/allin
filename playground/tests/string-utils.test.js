@@ -18,5 +18,5 @@ check('should return true if starts with query', () => {
 });
 
 check('should not be blank', () => {
-    expect(stringUtils.isBlank('something'));
+    expect(!stringUtils.isBlank('something'));
 });
