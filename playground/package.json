@@ -1,0 +1,14 @@
+{
+  "name": "playground",
+  "version": "1.0.0",
+  "description": "",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node tests"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}
