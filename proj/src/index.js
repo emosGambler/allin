@@ -15,4 +15,8 @@ const expect = (val) => {
     throw new Error('Assersion failed.');
 };
 
-module.exports = { check, expect };
+const xcheck = (description, callback) => {
+    console.log(`${' IGNORED '.bgYellow.black} ${description}`);
+};
+
+module.exports = { check, expect, xcheck };

@@ -1,4 +1,4 @@
-const { expect, check } = require('allin');
+const { expect, check, xcheck } = require('allin');
 const stringUtils = require('./../src/string-utils');
 
 check('should first letter be capitalized', () => {
@@ -6,7 +6,7 @@ check('should first letter be capitalized', () => {
     expect(stringUtils.capitalizeFirstLetter('why So Serious?') === 'Why So Serious?');
 });
 
-check('should string be blank', () => {
+xcheck('should string be blank', () => {
     expect(stringUtils.isBlank(''));
     expect(stringUtils.isBlank('      '));
 });
