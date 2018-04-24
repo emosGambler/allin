@@ -1,40 +1,40 @@
 const deepEqual = require('deep-equal');
 
-module.exports = (a) => {
+module.exports = (actualValue) => {
     return {
         to: {
             be: {
                 falsy: () => {
-                    if (!a) return true;
-                    throw new Error(`The value is not falsy.\n\nActual: ${a}\nExpected: falsy`);
+                    if (!actualValue) return true;
+                    throw new Error(`Given value is not falsy.\n\nActual: ${actualValue}\nExpected: falsy`);
                 },
                 sameAs: (expectedValue) => {
-                    if (a === expectedValue) return true;
-                    throw new Error(`The values are not the same.\n\nActual: ${a}\nExpected: ${expectedValue}`);
+                    if (actualValue === expectedValue) return true;
+                    throw new Error(`Given values are not the same.\n\nActual: ${actualValue}\nExpected: ${expectedValue}`);
                 },
                 truthy: () => {
-                    if (a) return true;
-                    throw new Error(`The value is not truthy.\n\nActual: ${a}\nExpected: truthy`);
+                    if (actualValue) return true;
+                    throw new Error(`Given value is not truthy.\n\nActual: ${actualValue}\nExpected: truthy`);
                 }
             },
             deeplyEqual: (expectedValue) => {
-                if (deepEqual(a, expectedValue)) return true;
-                throw new Error(`The values are not deeply equal.\n\nActual: ${JSON.stringify(a)}\nExpected: ${JSON.stringify(expectedValue)}`);
+                if (deepEqual(actualValue, expectedValue)) return true;
+                throw new Error(`Given values are not deeply equal.\n\nActual: ${JSON.stringify(actualValue)}\nExpected: ${JSON.stringify(expectedValue)}`);
             },
             equal: (expectedValue) => {
-                if (a == expectedValue) return true;
-                throw new Error(`The values are not equal.\n\nActual: ${a}\nExpected: ${expectedValue}`);
+                if (actualValue == expectedValue) return true;
+                throw new Error(`Given values are not equal.\n\nActual: ${actualValue}\nExpected: ${expectedValue}`);
             },
             not: {
                 be: {
                     sameAs: (expectedValue) => {
-                        if (a !== expectedValue) return true;
-                        throw new Error(`The values are the same.\n\nActual: ${a}\nExpected: ${expectedValue}`);
+                        if (actualValue !== expectedValue) return true;
+                        throw new Error(`Given values are the same.\n\nActual: ${actualValue}\nExpected: ${expectedValue}`);
                     }
                 },
                 equal: (expectedValue) => {
-                    if (a != expectedValue) return true;
-                    throw new Error(`The values are equal.\n\nActual: ${a}\nExpected: ${expectedValue}`);
+                    if (actualValue != expectedValue) return true;
+                    throw new Error(`Given values are equal.\n\nActual: ${actualValue}\nExpected: ${expectedValue}`);
                 }
             }
         }
