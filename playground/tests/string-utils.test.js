@@ -26,7 +26,11 @@ scenario('String utils', () => {
         expect('this').to.be('this');
     });
 
-    check('should not be cool', () => {
-        expect('this').to.be('that');
+    check('should not be cool but pass', () => {
+        expect('this').to.not.be('that');
+    });
+
+    check('should not be cool but pass', () => {
+        expect('this').to.not.be('this');
     });
 });
