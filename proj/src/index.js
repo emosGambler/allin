@@ -25,9 +25,9 @@ const end = () => {
     process.exit(0);
 };
 
-const expect = (val) => {
-    if (val) {
-        return assertions(val);
+const expect = (actualValue) => {
+    if (actualValue) {
+        return assertions(actualValue);
     };
     throw new Error('Assersion failed or null/undefined value were put.');
 };
