@@ -1,12 +1,20 @@
-const { beforeEach, expect, check, scenario, xcheck } = require('allin');
+const { beforeAll, beforeEach, expect, check, scenario, xcheck } = require('allin');
 
 scenario('Testing to.be.sameAs', () => {
     
+    beforeAll(() => {
+        console.log('testing beforeAll boy');
+    });
+
     beforeEach(() => {
         console.log('what');
     });
     
     scenario('Just testing before Each', () => {
+        
+        beforeAll(() => {
+            console.log('testing second beforeAll boy');
+        });
         
         beforeEach(() => {
             console.log('is it');
@@ -32,7 +40,6 @@ scenario('Testing to.equal', () => {
     beforeEach(() => {
         console.log('my lord?');
     });
-
 
     check('should to.equal work - PASSED', () => {
         expect(2).to.equal(2);

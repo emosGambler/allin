@@ -4,6 +4,10 @@ const colors = require('colors');
 const beforeEachStack = [[]];
 const summary = { success: 0, fail: 0, ignored: 0};
 
+const beforeAll = (callback) => {
+    callback();
+};
+
 const beforeEach = (callback) => {
     beforeEachStack[beforeEachStack.length - 1].push(callback);
 };
@@ -58,4 +62,4 @@ const xcheck = (description, callback) => {
     summary.ignored++;
 };
 
-module.exports = { beforeEach, check, end, expect, scenario, xcheck };
+module.exports = { beforeAll, beforeEach, check, end, expect, scenario, xcheck };
