@@ -26,10 +26,10 @@ const end = () => {
 };
 
 const expect = (actualValue) => {
-    if (actualValue) {
+    if (actualValue !== undefined) {
         return assertions(actualValue);
     };
-    throw new Error('Assersion failed or null/undefined value were put.');
+    throw new Error('Assersion failed. Given value is undefined.');
 };
 
 const scenario = (title, callback) => {
