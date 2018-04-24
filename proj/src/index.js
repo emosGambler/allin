@@ -1,5 +1,5 @@
 const colors = require('colors');
-const assertions = require('./matchers/toBe');
+const assertions = require('./matchers/assert');
 
 const summary = { success: 0, fail: 0, ignored: 0};
 
@@ -29,7 +29,7 @@ const expect = (val) => {
     if (val) {
         return assertions(val);
     };
-    throw new Error('Assersion failed.');
+    throw new Error('Assersion failed or null/undefined value were put.');
 };
 
 const scenario = (title, callback) => {
