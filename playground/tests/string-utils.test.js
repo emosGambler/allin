@@ -13,7 +13,7 @@ scenario('String utils', () => {
     });
     
     check('should return true if starts with query', () => {
-        expect(stringUtils.startsWith('It is easy', 'It'));
+        expect(stringUtils.startsWith('It is easy', 'It')).toBe(man);
         expect(!stringUtils.startsWith('It is easy', 'easy'));
         expect(!stringUtils.startsWith('It is easy', 'something'));
     });

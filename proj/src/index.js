@@ -1,4 +1,5 @@
 const colors = require('colors');
+const assertions = require('./matchers/toBe');
 
 const summary = { success: 0, fail: 0, ignored: 0};
 
@@ -25,7 +26,9 @@ const end = () => {
 };
 
 const expect = (val) => {
-    if (val) return true;
+    if (val) {
+        return assertions(val);
+    };
     throw new Error('Assersion failed.');
 };
 
