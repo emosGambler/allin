@@ -32,3 +32,18 @@ scenario('Testing equal', () => {
         expect(2).to.not.equal('3');
     });
 });
+
+scenario('Testing deep-equal', () => {
+    check('should to.deeplyEqual work - PASSED', () => {
+        expect(2).to.deeplyEqual(2);
+    });
+    check('should to.deeplyEqual work - PASSED', () => {
+        expect({ 'lol': 2, 'xD': 3 }).to.deeplyEqual({ 'lol': 2, 'xD': 3 });
+    });
+    check('should to.deeplyEqual work - FAILED', () => {
+        expect({ 'lol': 2, 'xD': 2 }).to.deeplyEqual({ 'lol': 2, 'xD': 3 });
+    });
+    check('should to.deeplyEqual work - FAILED', () => {
+        expect({ 'lol': 2, 'xd': 2 }).to.deeplyEqual({ 'lol': 2, 'xD': 2 });
+    });
+});

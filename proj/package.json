@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/emosGambler/allin#readme",
   "dependencies": {
-    "colors": "^1.2.1"
+    "colors": "^1.2.1",
+    "deep-equal": "^1.0.1"
   },
   "devDependencies": {
     "rimraf": "^2.6.2"
