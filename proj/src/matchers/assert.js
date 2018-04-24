@@ -4,6 +4,10 @@ module.exports = (a) => {
     return {
         to: {
             be: {
+                falsy: () => {
+                    if (!a) return true;
+                    throw new Error(`The value is not falsy.\n\nActual: ${a}\nExpected: falsy`);
+                },
                 sameAs: (expectedValue) => {
                     if (a === expectedValue) return true;
                     throw new Error(`The values are not the same.\n\nActual: ${a}\nExpected: ${expectedValue}`);

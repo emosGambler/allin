@@ -62,3 +62,18 @@ scenario('Testing to.be.truthy', () => {
         expect(null).to.be.truthy();
     });
 });
+
+scenario('Testing to.be.falsy', () => {
+    check('should to.be.falsy work - PASSED', () => {
+        expect(0).to.be.falsy();
+    });
+    check('should to.be.falsy work - FAILED', () => {
+        expect(1).to.be.falsy();
+    });
+    check('should to.be.falsy work - PASSED', () => {
+        expect('').to.be.falsy();
+    });
+    check('should to.be.falsy work - PASSED', () => {
+        expect(null).to.be.falsy();
+    });
+});
