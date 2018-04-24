@@ -34,3 +34,18 @@ scenario('String utils', () => {
         expect('this').to.not.be('this');
     });
 });
+
+scenario('Some testing', () => {
+    check('should to.be.equal works - PASSED', () => {
+        expect(2).to.equal('2');
+    });
+    check('should to.be.equal works - PASSED', () => {
+        expect(2).to.not.equal('3');
+    });
+    check('should to.be.equal works - FAILED', () => {
+        expect(2).to.equal('3');
+    });
+    check('should to.be.equal works - FAILED', () => {
+        expect(2).to.not.equal('2');
+    });
+});
