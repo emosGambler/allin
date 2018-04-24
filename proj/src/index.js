@@ -1,9 +1,15 @@
-const colors = require('colors');
 const assertions = require('./matchers/assert');
+const colors = require('colors');
 
+const beforeEachStack = [[]];
 const summary = { success: 0, fail: 0, ignored: 0};
 
+const beforeEach = (callback) => {
+    beforeEachStack[beforeEachStack.length - 1].push(callback);
+};
+
 const check = (description, callback) => {
+    runEveryBeforeEach();
     try {
         callback();
         console.log(`${' ✓ '.bgGreen.black} ${description.green}`);
@@ -32,9 +38,19 @@ const expect = (actualValue) => {
     throw new Error('Assersion failed. Given value is undefined.');
 };
 
+const runEveryBeforeEach = () => {
+    beforeEachStack.forEach(level => {
+        level.forEach(callback => {
+            callback();
+        });
+    });
+};
+
 const scenario = (title, callback) => {
+    beforeEachStack.push([]);
     console.log(`\n Scenario: ${title}`.cyan);
     callback();
+    beforeEachStack.pop();
 };
 
 const xcheck = (description, callback) => {
@@ -42,4 +58,4 @@ const xcheck = (description, callback) => {
     summary.ignored++;
 };
 
-module.exports = { check, end, expect, scenario, xcheck };
+module.exports = { beforeEach, check, end, expect, scenario, xcheck };

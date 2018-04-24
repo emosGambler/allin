@@ -1,21 +1,39 @@
-const { expect, check, scenario, xcheck } = require('allin');
+const { beforeEach, expect, check, scenario, xcheck } = require('allin');
 
 scenario('Testing to.be.sameAs', () => {
-    check('should to.be.sameAs work - PASSED', () => {
-        expect(2).to.be.sameAs(2);
+    
+    beforeEach(() => {
+        console.log('what');
     });
-    check('should to.be.sameAs work - FAILED', () => {
-        expect(2).to.be.sameAs('3');
-    });
-    check('should to.not.be.sameAs work - PASSED', () => {
-        expect(2).to.not.be.sameAs(3);
-    });
-    check('should to.not.be.sameAs work - PASSED', () => {
-        expect(2).to.not.be.sameAs('2');
+    
+    scenario('Just testing before Each', () => {
+        
+        beforeEach(() => {
+            console.log('is it');
+        });
+
+        check('should to.be.sameAs work - PASSED', () => {
+            expect(2).to.be.sameAs(2);
+        });
+        check('should to.be.sameAs work - FAILED', () => {
+            expect(2).to.be.sameAs('3');
+        });
+        check('should to.not.be.sameAs work - PASSED', () => {
+            expect(2).to.not.be.sameAs(3);
+        });
+        check('should to.not.be.sameAs work - PASSED', () => {
+            expect(2).to.not.be.sameAs('2');
+        });
     });
 });
 
 scenario('Testing to.equal', () => {
+
+    beforeEach(() => {
+        console.log('my lord?');
+    });
+
+
     check('should to.equal work - PASSED', () => {
         expect(2).to.equal(2);
     });
