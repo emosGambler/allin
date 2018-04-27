@@ -31,6 +31,7 @@ scenario('Testing to.be.sameAs', () => {
         });
         check('should to.not.be.sameAs work - PASSED', () => {
             expect(2).to.not.be.sameAs('2');
+            expect('lol').to.deeplyEqual('lol');
         });
     });
 });

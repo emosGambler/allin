@@ -4,6 +4,10 @@ const colors = require('colors');
 const beforeEachStack = [[]];
 const summary = { success: 0, fail: 0, ignored: 0};
 
+const request = () => {
+    return require('request-promise');
+};
+
 const beforeAll = (callback) => {
     callback();
 };
@@ -13,26 +17,43 @@ const beforeEach = (callback) => {
 };
 
 const check = (description, callback) => {
-    runEveryBeforeEach();
-    try {
+    var promise1 = new Promise((resolve, reject) => {
+        runEveryBeforeEach();
+        resolve('beforeEach done');
+    });
+    var promise2 = new Promise((resolve, reject) => {
         callback();
-        console.log(`${' ✓ '.bgGreen.black} ${description.green}`);
-        summary.success++;
-    } catch (e) {
-        console.log(`${' FAILED '.bgRed.black} ${description.red}`);
-        console.log(e.stack.red);
-        summary.fail++;
-    }
+        resolve('good');
+        /*try {
+            callback();
+            resolve(`${' ✓ '.bgGreen.black} ${description.green}`);
+            summary.success++;
+        } catch (e) {
+            reject(`${' FAILED '.bgRed.black} ${description.red}`);
+            //console.log(e.stack.red);
+            summary.fail++;
+        }*/
+    });
+    promise1.then((value) => {
+        console.log(value);
+        return promise2;
+    }).then(value => {
+        console.log(value);
+    });
 };
 
 const end = () => {
-    console.log(`\nTest summary:`);
-    console.log(`   Success: ${summary.success}`.green);
-    console.log(`   Fail: ${summary.fail}`.red);
-    console.log(`   Ignored: ${summary.ignored}`.yellow);
-    console.log('\n');
-    if (summary.fail > 0) process.exit(1);
-    process.exit(0);
+    var promise1 = new Promise((resolve, reject) => {
+        console.log(`\nTest summary:`);
+        console.log(`   Success: ${summary.success}`.green);
+        console.log(`   Fail: ${summary.fail}`.red);
+        console.log(`   Ignored: ${summary.ignored}`.yellow);
+        console.log('\n');
+        if (summary.fail > 0) process.exit(1);
+        process.exit(0);
+        resolve(' i dont even know');
+    });
+    promise1;
 };
 
 const expect = (actualValue) => {
@@ -51,10 +72,24 @@ const runEveryBeforeEach = () => {
 };
 
 const scenario = (title, callback) => {
-    beforeEachStack.push([]);
-    console.log(`\n Scenario: ${title}`.cyan);
-    callback();
-    beforeEachStack.pop();
+    var promise1 = new Promise((resolve, reject) => {
+        beforeEachStack.push([]);
+        resolve(`\n Scenario: ${title}`.cyan);
+    });
+    var promse2 = new Promise((resolve, reject) => {
+        callback();
+        resolve('check is loaded');
+    });
+    var promise3 = new Promise((resolve, reject) => {
+        beforeEachStack.pop();
+        resolve('end of check');
+    });
+
+    promise1.then(value => {
+        return promise2;
+    }).then(value => {
+        return promise3;
+    });
 };
 
 const xcheck = (description, callback) => {
@@ -62,4 +97,4 @@ const xcheck = (description, callback) => {
     summary.ignored++;
 };
 
-module.exports = { beforeAll, beforeEach, check, end, expect, scenario, xcheck };
+module.exports = { beforeAll, beforeEach, check, request, end, expect, scenario, xcheck };
