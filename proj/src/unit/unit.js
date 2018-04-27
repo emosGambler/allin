@@ -55,6 +55,7 @@ const scenario = (title, callback) => {
     console.log(`\n Scenario: ${title}`.cyan);
     callback();
     beforeEachStack.pop();
+    end();
 };
 
 const xcheck = (description, callback) => {
