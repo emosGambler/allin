@@ -10,5 +10,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "request": "^2.85.0"
+  }
 }

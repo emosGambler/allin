@@ -7,13 +7,13 @@ scenario('Testing to.be.sameAs', () => {
         console.log('testing beforeAll boy');
     });
 
-    scenario('Just testing before Each', () => {
+    scenario('Testing request', () => {
         check('should to.be.sameAs work - PASSED', () => {
+            console.log('1');
             request('https://http.cat/200', function (error, response, body) {
                 console.log('2');
-                resolve(response.statusCode);
             });
-            expect(2).to.be.sameAs(2);
+            console.log('3');
         });
-    }).t;
+    });
 });
